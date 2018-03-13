@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tabuadex.FXMLDocumentController">
+   <children>
+      <Pane layoutY="25.0" prefHeight="102.0" prefWidth="1000.0" style="-fx-background-color: #008B8B;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="27.0" layoutY="80.0" text="Número de tentativas:" textFill="WHITE" />
+            <Label fx:id="nTentativas" layoutX="156.0" layoutY="80.0" text="0" textFill="WHITE" />
+            <Label layoutX="287.0" layoutY="80.0" text="Número de acertos:" textFill="WHITE" />
+            <Label fx:id="nAcertos" layoutX="402.0" layoutY="80.0" text="0" textFill="WHITE" />
+            <Label layoutX="529.0" layoutY="80.0" text="Número de erros:" textFill="WHITE" />
+            <Label fx:id="nErros" layoutX="633.0" layoutY="80.0" text="0" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane prefHeight="77.0" prefWidth="1000.0" style="-fx-background-color: #20B2AA;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="28.0" layoutY="43.0" text="Nível" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_1" layoutX="79.0" layoutY="39.0" mnemonicParsing="false" onAction="#click_niv_1" text="1" />
+            <Button fx:id="btn_2" layoutX="109.0" layoutY="39.0" mnemonicParsing="false" onAction="#click_niv_2" text="2" />
+            <Button fx:id="btn_3" layoutX="139.0" layoutY="39.0" mnemonicParsing="false" onAction="#click_niv_3" text="3" />
+            <Button fx:id="btn_4" layoutX="169.0" layoutY="39.0" mnemonicParsing="false" onAction="#click_niv_4" text="4" />
+            <ComboBox fx:id="operacao" layoutX="818.0" layoutY="39.0" onAction="#operacaoArit" prefWidth="150.0" promptText="Operações" />
+         </children>
+      </Pane>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Arquivo">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#salvarArquivo" text="Salvar arquivo" />
+                  <MenuItem mnemonicParsing="false" onAction="#abrirArquivo" text="Abrir arquivo" />
+              <MenuItem mnemonicParsing="false" onAction="#fechar" text="Fechar" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Editar">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Histórico">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#abrirHistorico" text="Abrir" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Ajuda">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="tela_bemvindo" layoutX="6.0" layoutY="102.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+         <children>
+            <Label layoutX="350.0" layoutY="93.0" text="Bem vindo">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Label>
+            <Label layoutX="277.0" layoutY="198.0" text="Escolha o nivel e a operação">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="451.0" layoutY="401.0" text="Software Tabuadex" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tela_historico" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+         <children>
+            <TableView layoutX="65.0" layoutY="46.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tela_principal" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+         <children>
+            <Label fx:id="n1" layoutX="131.0" layoutY="152.0" text="0000">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="simboloOperacao" layoutX="290.0" layoutY="152.0" text="+">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="n2" layoutX="383.0" layoutY="152.0" text="0000">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="539.0" layoutY="152.0" text="=">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Label>
+            <TextField fx:id="campoDigitavel" layoutX="633.0" layoutY="136.0" onAction="#calcular" prefHeight="102.0" prefWidth="236.0">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </TextField>
+            <Button layoutX="742.0" layoutY="274.0" mnemonicParsing="false" onAction="#calcular" prefHeight="38.0" prefWidth="127.0" text="Calcular">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="resuladoDeclarado" layoutX="131.0" layoutY="285.0" prefHeight="17.0" prefWidth="586.0" text="Resultado..." />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="tela_arquivo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="102.0">
+         <children>
+            <TextArea fx:id="txtarea" layoutX="28.0" layoutY="24.0" prefHeight="347.0" prefWidth="714.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
